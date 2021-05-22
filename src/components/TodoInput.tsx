@@ -12,7 +12,7 @@ export function TodoInput({ addTask }: TodoInputProps) {
 
   function handleAddNewTask() {
     addTask(task)    
-    setTask('2')
+    setTask('')
     //TODO - Call addTask and clean input value 
   }
 
@@ -24,6 +24,7 @@ export function TodoInput({ addTask }: TodoInputProps) {
         returnKeyType="send"
         onChangeText={setTask}
         onSubmitEditing={()=> {handleAddNewTask()}}
+        value={task}
         //TODO - use value, onChangeText and onSubmitEditing props
       />
       <TouchableOpacity

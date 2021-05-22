@@ -31,9 +31,7 @@ export function Home() {
         return {...task, done: !task.done};        
       }
       return task
-    });
-    console.log(task)    
-    //setState({todos: updatedList}); // set state to new object with updated list  
+    });        
     setTasks(task)
   }
 
