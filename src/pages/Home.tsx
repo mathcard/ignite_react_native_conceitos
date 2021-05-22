@@ -11,6 +11,7 @@ interface Task {
 }
 
 export function Home() {
+  const [dark, setDark] = useState<boolean>(false);
   const [tasks, setTasks] = useState<Task[]>([]);
 
   function handleAddTask(newTaskTitle: string) {
@@ -31,7 +32,7 @@ export function Home() {
         return {...task, done: !task.done};        
       }
       return task
-    });        
+    });            
     setTasks(task)
   }
 
@@ -39,13 +40,21 @@ export function Home() {
     setTasks(oldState => oldState.filter(row => row.id !== id))    
   }
 
+  function handleTheme() {
+    setDark(!dark);
+  }
+
   return (
     <>
-      <Header />
+      <Header 
+        dark={dark}
+        onPress={handleTheme}  
+      />
 
-      <TodoInput addTask={handleAddTask} />
+      <TodoInput addTask={handleAddTask} dark={dark}/>
 
       <MyTasksList 
+        dark={dark}
         tasks={tasks} 
         onPress={handleMarkTaskAsDone} 
         onLongPress={handleRemoveTask} 

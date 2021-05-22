@@ -10,6 +10,7 @@ function FlatListHeaderComponent() {
 }
 
 interface MyTasksListProps {
+  dark: boolean,
   tasks: {
     id: number;
     title: string;
@@ -19,10 +20,11 @@ interface MyTasksListProps {
   onLongPress: (id: number) => void;
 }
 
-export function MyTasksList({ tasks, onLongPress, onPress }: MyTasksListProps) {
+export function MyTasksList({ dark, tasks, onLongPress, onPress }: MyTasksListProps) {
   return (
     <FlatList
       data={tasks}
+      //style={dark? styles.flatListDark : styles.flatList}
       keyExtractor={item => String(item.id)}
       renderItem={({ item, index }) => {
         return (
@@ -49,10 +51,10 @@ export function MyTasksList({ tasks, onLongPress, onPress }: MyTasksListProps) {
       ListHeaderComponentStyle={{
         marginBottom: 20
       }}
-      style={{
+      style={{ 
         marginHorizontal: 24,
         marginTop: 32
-      }}
+      }}            
     />
   )
 }
@@ -103,5 +105,14 @@ const styles = StyleSheet.create({
   taskTextDone: {
     color: '#A09CB1',
     textDecorationLine: 'line-through'
+  },
+  flatList: {
+    marginHorizontal: 24,
+    marginTop: 32
+  },
+  flatListDark: {
+    marginHorizontal: 24,
+    marginTop: 32,
+    backgroundColor: '#1F1F1F',
   }
 })
